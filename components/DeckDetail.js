@@ -33,8 +33,8 @@ class DeckDetail extends Component {
           </View>
           
           <View style={styles.buttonContainer}>
-            <Button title="Add card" onPress={ () => alert("add card") }/>
-            <Button title="Start quiz" onPress={ () => alert("start quiz") }/>
+            <Button title="Add card" onPress={ () => alert("start quiz") }/>
+            <Button title="Start quiz" onPress={ () => this.props.navigation.navigate('Quiz', { questions: deck.questions }) }/>
           </View>
         </View>
       )

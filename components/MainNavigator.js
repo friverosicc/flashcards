@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import Tabs from './Tabs'
 import DeckDetail from './DeckDetail'
+import Quiz from './Quiz'
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -13,6 +14,9 @@ const MainNavigator = StackNavigator({
   }, 
   DeckDetail: {
     screen: DeckDetail
+  },
+  Quiz: {
+    screen: Quiz
   }
 })
 
