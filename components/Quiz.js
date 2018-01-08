@@ -15,13 +15,36 @@ class Quiz extends Component {
       questions,
       total: questions.length,
       current: 0,
-      answersCorrect: 0
+      answersCorrect: 0,
+      showQuestion: true,
+      showTestResult: false
     }
+  }
+
+  correctAnswer() {
+    this.setState({ answersCorrect: (this.state.answersCorrect + 1) })
+    this.goToNextCard()
+  }
+
+  goToNextCard() {
+    const newCurrent = this.state.current + 1
+
+    if (newCurrent < (this.state.total))
+      this.setState({ current: newCurrent, showQuestion: true })
+    else
+      this.setState({ showTestResult: true })
   }
 
   render() {
     const { questions, current } = this.state
     const question = questions[current]
+
+    if (this.state.showTestResult)
+      return (
+        <View style={styles.body}>
+            <Text style={styles.primaryText}>{this.state.answersCorrect} answers correct</Text>
+        </View>
+      )
 
     return (
       <View style={styles.container}>
@@ -29,16 +52,23 @@ class Quiz extends Component {
           <Text style={styles.indexes}>{current+1}/{this.state.total}</Text>
         </View>
 
-        <View style={styles.body}>
-          <Text style={styles.primaryText}>{question.question}</Text>
-          <TouchableOpacity onPress={() => alert('answer')}>
-            <Text style={styles.secondaryText}>Answer</Text>
+        {(this.state.showQuestion) ?
+          (<View style={styles.body}>
+            <Text style={styles.primaryText}>{question.question}</Text>
+            <TouchableOpacity onPress={() => this.setState({ showQuestion: false })}>
+              <Text style={styles.secondaryText}>Answer</Text>
+            </TouchableOpacity>
+          </View>) :
+        (<View style={styles.body}>
+          <Text style={styles.primaryText}>{question.answer}</Text>
+          <TouchableOpacity onPress={() => this.setState({ showQuestion: true })}>
+            <Text style={styles.secondaryText}>Question</Text>
           </TouchableOpacity>
-        </View>
+        </View>)}
 
         <View style={styles.options}>
-          <Button onPress={() => alert('correct ...')} title='correct' />
-          <Button onPress={() => alert('incorrect ...')} title='incorrect' />
+          <Button onPress={() => this.correctAnswer()} title='correct' />
+          <Button onPress={() => this.goToNextCard()} title='incorrect' />
         </View>
       </View>
     )
