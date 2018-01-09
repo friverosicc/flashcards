@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation'
 import Tabs from './Tabs'
 import DeckDetail from './DeckDetail'
 import Quiz from './Quiz'
+import NewCard from './NewCard'
 
 const MainNavigator = StackNavigator({
   Home: {
@@ -17,6 +18,9 @@ const MainNavigator = StackNavigator({
   },
   Quiz: {
     screen: Quiz
+  },
+  NewCard: {
+    screen: NewCard
   }
 })
 

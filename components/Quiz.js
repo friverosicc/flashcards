@@ -112,11 +112,13 @@ const styles = StyleSheet.create({
   },
   primaryText: {
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   secondaryText: {
     fontSize: 20,
-    color: '#F00'
+    color: '#F00',
+    textAlign: 'center'
   }
 })
 

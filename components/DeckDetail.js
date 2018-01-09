@@ -30,8 +30,8 @@ class DeckDetail extends Component {
           </View>
           
           <View style={styles.buttonContainer}>
-            <Button title="Add card" onPress={ () => alert("start quiz") }/>
-            <Button title="Start quiz" onPress={ () => this.props.navigation.navigate('Quiz', { questions: deck.questions }) }/>
+            <Button title="Add card" onPress={ () => this.props.navigation.navigate('NewCard', { title: deck.title }) }/>
+            <Button title="Start quiz" disabled={(deck.questions.length === 0)} onPress={ () => this.props.navigation.navigate('Quiz', { questions: deck.questions }) }/>
           </View>
         </View>
       )
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   description: {
     fontSize: 20,
