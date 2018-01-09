@@ -35,14 +35,32 @@ class Quiz extends Component {
       this.setState({ showTestResult: true })
   }
 
+  restartQuiz() {
+    this.setState({
+      current: 0,
+      answersCorrect: 0,
+      showQuestion: true,
+      showTestResult: false
+    })
+  }
+
   render() {
     const { questions, current } = this.state
     const question = questions[current]
 
     if (this.state.showTestResult)
       return (
-        <View style={styles.body}>
-            <Text style={styles.primaryText}>{this.state.answersCorrect} answers correct</Text>
+        <View style={styles.container}>
+          <View style={styles.body}>
+            <Text style={styles.primaryText}>Quiz finished</Text>
+            <Text style={styles.primaryText}>{this.state.answersCorrect} corrects</Text>
+            <Text style={styles.primaryText}>{this.state.total - this.state.answersCorrect} incorrects</Text>
+          </View>
+
+          <View style={styles.options}>
+            <Button onPress={() => this.restartQuiz()} title='restart quiz' />
+            <Button onPress={() => this.props.navigation.goBack()} title='back to deck' />
+          </View>
         </View>
       )
 

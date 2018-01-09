@@ -10,10 +10,7 @@ class DeckDetail extends Component {
     return { title }
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+  state = {}
 
   componentDidMount() {
     const { title } = this.props.navigation.state.params
