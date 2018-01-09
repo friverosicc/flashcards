@@ -30,6 +30,7 @@ class NewDeck extends Component {
               onChangeText={(text) => this.setState({ text })}
               value={this.state.text}
               placeholder="Deck title"
+              placeholderTextColor="#555068"
             />
           </View>
 
