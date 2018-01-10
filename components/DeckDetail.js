@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
-import Deck from './Deck'
 import { getDeck } from '../utils/api'
 
 class DeckDetail extends Component {
@@ -19,8 +18,9 @@ class DeckDetail extends Component {
   }
 
   getDeck(title) {
+    this.props.navigation.state.params.callback()
     getDeck(title)
-      .then(result => this.setState({ deck: result }))
+    .then(result => this.setState({ deck: result }))
   }
 
   render() {

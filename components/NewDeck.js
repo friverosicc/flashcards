@@ -11,7 +11,7 @@ class NewDeck extends Component {
     else
       saveDeckTitle(this.state.text)
       .then(() => {
-        this.props.navigation.navigate('DeckDetail', { title: this.state.text })
+        this.props.navigation.navigate('Decks', { newDeckCreated: true, newDeckTitle: this.state.text })
         this.setState({ text: '' })
       })
   }
