@@ -15,6 +15,10 @@ class DeckDetail extends Component {
   componentDidMount() {
     const { title } = this.props.navigation.state.params
 
+    this.getDeck(title)
+  }
+
+  getDeck(title) {
     getDeck(title)
       .then(result => this.setState({ deck: result }))
   }
@@ -30,7 +34,7 @@ class DeckDetail extends Component {
           </View>
           
           <View style={styles.buttonContainer}>
-            <Button title="Add card" onPress={ () => this.props.navigation.navigate('NewCard', { title: deck.title }) }/>
+            <Button title="Add card" onPress={ () => this.props.navigation.navigate('NewCard', { title: deck.title, callback: () => this.getDeck(deck.title) }) }/>
             <Button title="Start quiz" disabled={(deck.questions.length === 0)} onPress={ () => this.props.navigation.navigate('Quiz', { questions: deck.questions }) }/>
           </View>
         </View>

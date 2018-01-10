@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
   static navigationOptions = {
@@ -29,10 +30,13 @@ class Quiz extends Component {
   goToNextCard() {
     const newCurrent = this.state.current + 1
 
-    if (newCurrent < (this.state.total))
+    if (newCurrent < (this.state.total)) {
       this.setState({ current: newCurrent, showQuestion: true })
-    else
+    } else {
       this.setState({ showTestResult: true })
+      clearLocalNotification()
+      .then(setLocalNotification)
+    }
   }
 
   restartQuiz() {

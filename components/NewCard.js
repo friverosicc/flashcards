@@ -17,10 +17,10 @@ class NewCard extends Component {
     else
       addCardToDeck(this.props.navigation.state.params.title, { question, answer })
       .then(() => {
-        this.props.navigation.navigate('DeckDetail', { title: this.props.navigation.state.params.title })
+        this.props.navigation.state.params.callback()
+        this.props.navigation.goBack()
         this.setState({ question: '', answer: '' })
       })
-      .catch(error => alert(error))
   }
 
   render() {
