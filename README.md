@@ -5,6 +5,7 @@ This is the final assessment project for Udacity's React & Redux course.
 This app allows to the users study a collections of flashcards, create different categories of flashcards called "decks", add flashcards to those decks, and take quizzes on those decks.
 
 ## Quickstart
+The app should work on IOS and Andriod
 
 To get running the project:
 
